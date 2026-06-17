@@ -325,7 +325,7 @@ export default function HomePage() {
               color: C.grey, fontSize: isMobile ? 15 : 16.5,
               lineHeight: 1.75, maxWidth: 520, marginBottom: 36,
             }}>
-              RS Infotech Security Systems designs, installs, and maintains CCTV, access control, fire alarm, and smart security solutions for homes and businesses across Tamil Nadu.
+              RS Infotech Security Systems is Kanchipuram's trusted provider of CCTV camera installation, access control, fire alarm, and smart security solutions for homes and businesses across Tamil Nadu.
             </p>
 
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
@@ -417,7 +417,7 @@ export default function HomePage() {
               Complete Security Solutions
             </h2>
             <p style={{ color: C.grey, fontSize: 15, maxWidth: 500, lineHeight: 1.7, margin: 0 }}>
-              From a single camera to a full enterprise-grade system — we handle everything in-house.
+              From CCTV camera installation in Kanchipuram to enterprise-grade access control — we handle everything in-house, on schedule, with local support.
             </p>
           </div>
 
@@ -520,7 +520,7 @@ export default function HomePage() {
             color: C.grey, fontSize: isMobile ? 14.5 : 16,
             lineHeight: 1.75, maxWidth: 520, margin: "0 auto 32px",
           }}>
-            Talk to our team today — no obligation, no jargon. We'll walk you through the right solution for your space and budget.
+            Talk to Kanchipuram's top-rated security team today — no obligation, no jargon. We'll walk you through the right solution for your space and budget.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link to="/contact" style={{
@@ -554,7 +554,7 @@ export default function HomePage() {
         color: C.greyDk, fontSize: 12.5,
         background: C.bg,
       }}>
-        © {new Date().getFullYear()} RS Infotech Security Systems. All rights reserved.
+        RS Infotech Security Systems — CCTV Camera & Security Installation in Kanchipuram, Tamil Nadu. © {new Date().getFullYear()} All rights reserved.
       </div>
 
     </div>
