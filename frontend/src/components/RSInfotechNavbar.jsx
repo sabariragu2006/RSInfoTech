@@ -59,18 +59,17 @@ export default function Navbar() {
               textDecoration: "none", flexShrink: 0,
             }}
           >
-            <img
-              src="/rs.png"
-              alt="RS Infotech"
-              style={{
-                width: 50,
-                height: 50,
-                borderRadius: 10,
-                objectFit: "cover",
-                objectPosition: "center",
-                transform: "scale(2)",
-              }}
-            />
+         <img
+  src="/rs.png"
+  alt="RS Infotech"
+  style={{
+    width: 120,
+    height: 120,
+    borderRadius: 10,
+    objectFit: "cover",
+    objectPosition: "center",
+  }}
+/>
             {!isMobile && (
               <div>
                 <div style={{

@@ -57,10 +57,10 @@ const SERVICES = [
     tagTypes: ["green", "sky"],
   },
   {
-    title: "Door Access System",
-    desc: "Card, PIN, and remote-controlled access systems to manage entry across your premises.",
-    icon: "🚪",
-    tags: ["Card & PIN", "Remote Control"],
+    title: "Billing Software",
+    desc: "GST-compliant billing and point-of-sale software to streamline invoicing and manage your retail or shop transactions.",
+    icon: "💳",
+    tags: ["GST Invoicing", "POS"],
     tagTypes: ["green", "sky"],
   },
   {
