@@ -44,7 +44,7 @@ export default function Navbar() {
       }}>
         <div style={{
           padding: isMobile ? "0 16px" : "0 32px",
-          height: 64,
+          height: isMobile ? 64 : 84,
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -55,31 +55,31 @@ export default function Navbar() {
           <Link
             to="/"
             style={{
-              display: "flex", alignItems: "center", gap: 10,
+              display: "flex", alignItems: "center", gap: 12,
               textDecoration: "none", flexShrink: 0,
             }}
           >
-         <img
-  src="/rs.png"
-  alt="RS Infotech"
-  style={{
-    width: 120,
-    height: 120,
-    borderRadius: 10,
-    objectFit: "cover",
-    objectPosition: "center",
-  }}
-/>
+            <img
+              src="/rs.png"
+              alt="RS Infotech"
+              style={{
+                width: isMobile ? 44 : 114,
+                height: isMobile ? 44 : 114,
+                borderRadius: 10,
+                objectFit: "cover",
+                objectPosition: "center",
+              }}
+            />
             {!isMobile && (
               <div>
                 <div style={{
-                  fontWeight: 700, fontSize: 17,
+                  fontWeight: 800, fontSize: 22,
                   color: "#0f172a", letterSpacing: ".02em",
                 }}>
                   RS<span style={{ color: "#16a34a" }}>Infotech</span>
                 </div>
                 <div style={{
-                  fontSize: "0.6rem", color: "#94a3b8",
+                  fontSize: "0.7rem", color: "#94a3b8",
                   letterSpacing: ".1em", textTransform: "uppercase",
                 }}>
                   Security Systems
@@ -96,7 +96,7 @@ export default function Navbar() {
           {/* ── Desktop center links ── */}
           {!isMobile && (
             <div style={{
-              display: "flex", alignItems: "center", gap: 4,
+              display: "flex", alignItems: "center", gap: 6,
               flex: 1, justifyContent: "center",
             }}>
               {NAV_LINKS.map((link) => (
@@ -113,20 +113,20 @@ export default function Navbar() {
           {/* ── Right side ── */}
           <div style={{
             display: "flex", alignItems: "center",
-            gap: isMobile ? 8 : 12, flexShrink: 0,
+            gap: isMobile ? 8 : 14, flexShrink: 0,
           }}>
             {/* 24/7 badge — desktop only */}
             {!isMobile && (
               <div style={{
                 display: "flex", alignItems: "center", gap: 6,
                 background: "#f0fdf4", border: "1px solid #86c995",
-                borderRadius: 20, padding: "5px 12px",
+                borderRadius: 20, padding: "6px 14px",
               }}>
                 <div style={{
-                  width: 6, height: 6, borderRadius: "50%",
+                  width: 7, height: 7, borderRadius: "50%",
                   background: "#22c55e",
                 }} />
-                <span style={{ fontSize: 12, color: "#16a34a", fontWeight: 600 }}>
+                <span style={{ fontSize: 13.5, color: "#16a34a", fontWeight: 600 }}>
                   24/7 Support
                 </span>
               </div>
@@ -137,10 +137,10 @@ export default function Navbar() {
               <Link to="/contact" style={{
                 background: "#16a34a",
                 color: "#ffffff",
-                fontSize: "0.84rem",
+                fontSize: "0.95rem",
                 fontWeight: 600,
-                padding: "8px 20px",
-                borderRadius: 7,
+                padding: "10px 24px",
+                borderRadius: 8,
                 textDecoration: "none",
                 whiteSpace: "nowrap",
                 letterSpacing: ".02em",
@@ -230,9 +230,9 @@ function NavButton({ label, active, to }) {
       style={{
         background: active || hov ? "#f0fdf4" : "transparent",
         color: active ? "#16a34a" : hov ? "#0ea5e9" : "#475569",
-        fontSize: 14, fontWeight: 500,
+        fontSize: 16.5, fontWeight: 600,
         textDecoration: "none",
-        padding: "8px 16px", borderRadius: 8,
+        padding: "10px 20px", borderRadius: 8,
         borderBottom: active ? "2px solid #16a34a" : "2px solid transparent",
         transition: "background 0.2s, color 0.2s",
         whiteSpace: "nowrap",

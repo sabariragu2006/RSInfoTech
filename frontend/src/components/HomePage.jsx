@@ -63,6 +63,13 @@ const SERVICES = [
     tags: ["GST Invoicing", "POS"],
     tagTypes: ["green", "sky"],
   },
+ {
+    title: "Door Access System",
+    desc: "Card, PIN, and remote-controlled access systems to manage entry across your premises.",
+    icon: "🚪",
+    tags: ["Card & PIN", "Remote Control"],
+    tagTypes: ["green", "sky"],
+  },
   {
     title: "Intercom System",
     desc: "Audio & video intercom solutions for seamless visitor communication and verification.",
@@ -75,6 +82,13 @@ const SERVICES = [
     desc: "Public address systems for clear, reliable announcements across large facilities.",
     icon: "📢",
     tags: ["Wide Coverage", "Clear Audio"],
+    tagTypes: ["green", "sky"],
+  },
+  {
+    title: "Home Automation",
+    desc: "Smart switches, app-based controls, and automated lighting for a connected, modern home.",
+    icon: "🏠",
+    tags: ["Smart Switches", "App Control"],
     tagTypes: ["green", "sky"],
   },
 ];
@@ -111,7 +125,7 @@ const WHY = [
 
 /* ─── sub-components ───────────────────────────────── */
 
-function ServiceCard({ icon, title, desc, isMobile }) {
+function ServiceCard({ icon, title, desc, isMobile, featured }) {
   const [hov, setHov] = useState(false);
   return (
     <div
@@ -126,6 +140,7 @@ function ServiceCard({ icon, title, desc, isMobile }) {
         transition: "background 0.2s, border-color 0.2s, transform 0.2s",
         transform: hov ? "translateY(-3px)" : "none",
         boxShadow: hov ? `0 8px 32px #16a34a18` : "0 1px 4px #0001",
+        gridColumn: featured ? "span 1" : undefined,
       }}
     >
       <div style={{ fontSize: 28, marginBottom: 12 }}>{icon}</div>
@@ -257,6 +272,11 @@ function ShieldGraphic() {
 export default function HomePage() {
   const { isMobile, isTablet } = useBreakpoint();
 
+  // 7 services: 3-column grid leaves 1 orphan card on the last row.
+  // Use a 4-column grid on desktop so rows read 4 + 3 (centered),
+  // and keep 2-column on tablet, 1-column on mobile.
+  const servicesCols = isMobile ? 1 : isTablet ? 2 : 4;
+
   return (
     <div style={{ background: C.bg, color: C.dark, fontFamily: "system-ui, sans-serif", overflowX: "hidden" }}>
 
@@ -310,22 +330,22 @@ export default function HomePage() {
               margin: "0 0 20px",
               color: C.dark,
             }}>
-              Security You Can{" "}
+              CCTV Camera in Kanchipuram{" "}
               <span style={{
                 background: `linear-gradient(135deg, ${C.green}, ${C.sky})`,
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}>
-                Trust.
+                You Can Trust.
               </span>
-              <br />Systems That Deliver.
+              <br />Security Services That Deliver.
             </h1>
 
             <p style={{
               color: C.grey, fontSize: isMobile ? 15 : 16.5,
               lineHeight: 1.75, maxWidth: 520, marginBottom: 36,
             }}>
-              RS Infotech Security Systems is Kanchipuram's trusted provider of CCTV camera installation, access control, fire alarm, and smart security solutions for homes and businesses across Tamil Nadu.
+              RS Infotech Security Systems is Kanchipuram's trusted provider of CCTV camera installation, biometric access control, fire alarm systems, and complete security services in Kanchipuram for homes and workplaces across Tamil Nadu.
             </p>
 
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
@@ -414,16 +434,16 @@ export default function HomePage() {
               fontSize: isMobile ? "1.8rem" : "2.2rem", fontWeight: 800,
               letterSpacing: "-.02em", margin: "0 0 12px", color: C.dark,
             }}>
-              Complete Security Solutions
+              Complete Security Services in Kanchipuram
             </h2>
-            <p style={{ color: C.grey, fontSize: 15, maxWidth: 500, lineHeight: 1.7, margin: 0 }}>
-              From CCTV camera installation in Kanchipuram to enterprise-grade access control — we handle everything in-house, on schedule, with local support.
+            <p style={{ color: C.grey, fontSize: 15, maxWidth: 620, lineHeight: 1.7, margin: 0 }}>
+              From CCTV camera installation in Kanchipuram to security services for workplaces, shops, temples, and textile units — we handle everything in-house, on schedule, with local support across Tamil Nadu.
             </p>
           </div>
 
           <div style={{
             display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : isTablet ? "1fr 1fr" : "repeat(3, 1fr)",
+            gridTemplateColumns: `repeat(${servicesCols}, 1fr)`,
             gap: 18,
           }}>
             {SERVICES.map((s) => (
@@ -554,7 +574,7 @@ export default function HomePage() {
         color: C.greyDk, fontSize: 12.5,
         background: C.bg,
       }}>
-        RS Infotech Security Systems — CCTV Camera & Security Installation in Kanchipuram, Tamil Nadu. © {new Date().getFullYear()} All rights reserved.
+        RS Infotech Security Systems — CCTV camera installation and security services in Kanchipuram, Tamil Nadu, including security services for workplaces, shops, temples, and textile units. © {new Date().getFullYear()} All rights reserved.
       </div>
 
     </div>

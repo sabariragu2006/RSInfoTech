@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rsinfotech.netlify.app/sitemap.xml
+Sitemap: https://rsinfotech.in/sitemap.xml

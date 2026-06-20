@@ -58,6 +58,13 @@ const SERVICES = [
     tags: ["GST Invoicing", "POS"],
     tagTypes: ["green", "sky"],
   },
+ {
+    title: "Door Access System",
+    desc: "Card, PIN, and remote-controlled access systems to manage entry across your premises.",
+    icon: "🚪",
+    tags: ["Card & PIN", "Remote Control"],
+    tagTypes: ["green", "sky"],
+  },
   {
     title: "Intercom System",
     desc: "Audio & video intercom solutions for seamless visitor communication and verification.",
@@ -70,6 +77,13 @@ const SERVICES = [
     desc: "Public address systems for clear, reliable announcements across large facilities.",
     icon: "📢",
     tags: ["Wide Coverage", "Clear Audio"],
+    tagTypes: ["green", "sky"],
+  },
+  {
+    title: "Home Automation",
+    desc: "Smart switches, app-based controls, and automated lighting for a connected, modern home.",
+    icon: "🏠",
+    tags: ["Smart Switches", "App Control"],
     tagTypes: ["green", "sky"],
   },
 ];
@@ -299,7 +313,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-   {/* ── SERVICES GRID ──────────────────────────── */}
+ {/* ── SERVICES GRID ──────────────────────────── */}
 <section style={{
   padding: isMobile ? "52px 20px" : "64px 80px",
   borderBottom: `1px solid ${C.border}`,
@@ -325,7 +339,7 @@ export default function ServicesPage() {
 
     <div style={{
       display: "grid",
-      gridTemplateColumns: isMobile ? "1fr" : isTablet ? "1fr 1fr" : "repeat(3, 1fr)",
+      gridTemplateColumns: isMobile ? "1fr" : isTablet ? "1fr 1fr" : "repeat(4, 1fr)",
       gap: 18,
     }}>
       {SERVICES.map((s) => (
