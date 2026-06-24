@@ -87,8 +87,8 @@ export default function Navbar() {
               </div>
             )}
             {isMobile && (
-              <div style={{ fontWeight: 700, fontSize: 16, color: "#16a34a" }}>
-                RSInfotech
+              <div style={{ fontWeight: 700, fontSize: 26, color: "#16a34a" }}>
+                RS Infotech
               </div>
             )}
           </Link>

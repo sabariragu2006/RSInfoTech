@@ -66,6 +66,129 @@ function InfoRow({ icon, label, value, href }) {
   return content;
 }
 
+/* ─── social links data ───────────────────────────── */
+const SOCIALS = [
+  {
+    label: "Instagram",
+    handle: "@rsinfotechkanchipuram",
+    href: "https://www.instagram.com/rsinfotechkanchipuram/",
+    icon: "📷",
+    bg: "#fdf2f8",
+    border: "#fbcfe8",
+    color: "#be185d",
+  },
+  {
+    label: "LinkedIn",
+    handle: "rs-infotech",
+    href: "https://www.linkedin.com/in/rs-infotech-781650419/",
+    icon: "💼",
+    bg: "#eff6ff",
+    border: "#bfdbfe",
+    color: "#1d4ed8",
+  },
+  {
+    label: "X (Twitter)",
+    handle: "@rsinfotechcv",
+    href: "https://x.com/rsinfotechcv",
+    icon: "✕",
+    bg: "#f8fafc",
+    border: "#e2e8f0",
+    color: "#0f172a",
+  },
+  {
+    label: "YouTube",
+    handle: "RS Infotech",
+    href: "https://www.youtube.com/channel/UCrSTaKdOfZeCG9bfkYUvbJA",
+    icon: "▶️",
+    bg: "#fef2f2",
+    border: "#fecaca",
+    color: "#b91c1c",
+  },
+];
+
+function SocialRow({ label, handle, href, icon, bg, border, color }) {
+  const [hov, setHov] = useState(false);
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 12,
+        background: bg,
+        color,
+        fontSize: 14,
+        fontWeight: 600,
+        padding: "13px 20px",
+        borderRadius: 10,
+        textDecoration: "none",
+        border: `1px solid ${hov ? color : border}`,
+        transition: "border-color 0.2s, transform 0.2s",
+        transform: hov ? "translateY(-1px)" : "none",
+      }}
+    >
+      <span style={{ fontSize: 18, width: 22, textAlign: "center" }}>
+        {icon}
+      </span>
+
+      <div>
+        <div
+          style={{
+            fontSize: 11,
+            fontWeight: 500,
+            letterSpacing: ".06em",
+            opacity: 0.75,
+          }}
+        >
+          {label.toUpperCase()}
+        </div>
+
+        <div>{handle}</div>
+      </div>
+    </a>
+  );
+}
+
+/* ─── Footer social icons (compact) ───────────────── */
+function FooterSocialIcons() {
+  const [hovIdx, setHovIdx] = useState(null);
+  return (
+    <div style={{ display: "flex", gap: 10, justifyContent: "center", marginTop: 12 }}>
+ {SOCIALS.map((s, i) => (
+  <a
+    key={s.label}
+    href={s.href}
+    target="_blank"
+    rel="noreferrer"
+    onMouseEnter={() => setHovIdx(i)}
+    onMouseLeave={() => setHovIdx(null)}
+    title={s.label}
+    style={{
+      width: 34,
+      height: 34,
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      background: hovIdx === i ? s.bg : C.card,
+      border: `1px solid ${hovIdx === i ? s.border : C.border}`,
+      fontSize: 15,
+      textDecoration: "none",
+      transition: "background 0.2s, border-color 0.2s",
+    }}
+  >
+    {s.icon}
+  </a>
+))}
+    </div>
+  );
+}
+
 const MAPS_URL = "https://www.google.co.in/maps/place/RS+Infotech/@12.8415034,79.6925041,17z/data=!3m1!4b1!4m6!3m5!1s0x3a52c36f43983d89:0x8a490f5fae9ee6c9!8m2!3d12.8415034!4d79.695079!16s%2Fg%2F11xtn8nr2n?entry=ttu";
 const EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.7520840984!2d79.6925041!3d12.8415034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52c36f43983d89%3A0x8a490f5fae9ee6c9!2sRS%20Infotech!5e0!3m2!1sen!2sin!4v1718500000000!5m2!1sen!2sin";
 function MapPreview({ isMobile }) {
@@ -191,7 +314,8 @@ export default function ContactPage() {
       <InfoRow icon="👤" label="Contact Person" value="R.S Thamizhselvan" />
       <InfoRow icon="📞" label="Primary Phone" value="+91 63808 55659" href="tel:+916380855659" />
       <InfoRow icon="📱" label="Alternate Phone" value="+91 81488 00259" href="tel:+918148800259" />
-<InfoRow icon="✉️" label="Email Address" value="rsinfotech00716@gmail.com" href="https://mail.google.com/mail/?view=cm&to=rsinfotech00716@gmail.com" />      <InfoRow icon="📍" label="Address" value="No 1/1A/6, Sathankutai Street, Kanchipuram, Tamil Nadu - 631502" href={MAPS_URL} />
+      <InfoRow icon="✉️" label="Email Address" value="rsinfotech00716@gmail.com" href="https://mail.google.com/mail/?view=cm&to=rsinfotech00716@gmail.com" />
+      <InfoRow icon="📍" label="Address" value="No 1/1A/6, Sathankutai Street, Kanchipuram, Tamil Nadu - 631502" href={MAPS_URL} />
       <div style={{ padding: "18px 0" }}>
         <div style={{ fontSize: 11.5, color: C.greyDk, fontWeight: 600, letterSpacing: ".06em", textTransform: "uppercase", marginBottom: 3 }}>
           GST Number
@@ -202,11 +326,11 @@ export default function ContactPage() {
       </div>
     </div>
 
-    {/* RIGHT — reach us card */}
+    {/* RIGHT — reach us + follow us */}
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
 
       {/* Quick contact card */}
-      <div style={{ background: "#f0fdf4", border: `1px solid ${C.borderLt}`, borderRadius: 14, padding: "28px 24px", flex: 1 }}>
+      <div style={{ background: "#f0fdf4", border: `1px solid ${C.borderLt}`, borderRadius: 14, padding: "28px 24px" }}>
         <div style={{ fontSize: 12, fontWeight: 700, color: C.green, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: 10 }}>
           Reach Us Directly
         </div>
@@ -235,12 +359,28 @@ export default function ContactPage() {
               <div>Chat with us now</div>
             </div>
           </a>
-<a href="https://mail.google.com/mail/?view=cm&to=rsinfotech00716@gmail.com" target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", gap: 12, background: "#f0f9ff", color: C.sky, fontSize: 14, fontWeight: 600, padding: "13px 20px", borderRadius: 10, textDecoration: "none", border: `1px solid ${C.skyLt}` }}>            <span style={{ fontSize: 20 }}>✉️</span>
+          <a href="https://mail.google.com/mail/?view=cm&to=rsinfotech00716@gmail.com" target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", gap: 12, background: "#f0f9ff", color: C.sky, fontSize: 14, fontWeight: 600, padding: "13px 20px", borderRadius: 10, textDecoration: "none", border: `1px solid ${C.skyLt}` }}>
+            <span style={{ fontSize: 20 }}>✉️</span>
             <div>
               <div style={{ fontSize: 11, fontWeight: 500, letterSpacing: ".06em", opacity: 0.75 }}>EMAIL</div>
               <div>rsinfotech00716@gmail.com</div>
             </div>
           </a>
+        </div>
+      </div>
+
+      {/* Follow us card */}
+      <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, padding: "28px 24px", boxShadow: "0 1px 4px #0001" }}>
+        <div style={{ fontSize: 12, fontWeight: 700, color: C.sky, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: 10 }}>
+          Follow Us
+        </div>
+        <p style={{ color: C.grey, fontSize: 14, lineHeight: 1.7, margin: "0 0 20px" }}>
+          Stay updated with our latest installations, offers, and behind-the-scenes work.
+        </p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          {SOCIALS.map((s) => (
+            <SocialRow key={s.label} {...s} />
+          ))}
         </div>
       </div>
 
@@ -283,8 +423,9 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <div style={{ borderTop: `1px solid ${C.border}`, padding: "20px", textAlign: "center", color: C.greyDk, fontSize: 12.5, background: C.bg }}>
-        {new Date().getFullYear()} RS Infotech Security Systems · GST: 33IIUPS6797A1ZF · Kanchipuram, Tamil Nadu
+      <div style={{ borderTop: `1px solid ${C.border}`, padding: "24px 20px", textAlign: "center", color: C.greyDk, fontSize: 12.5, background: C.bg }}>
+        <div>{new Date().getFullYear()} RS Infotech Security Systems · GST: 33IIUPS6797A1ZF · Kanchipuram, Tamil Nadu</div>
+        <FooterSocialIcons />
       </div>
 
     </div>
